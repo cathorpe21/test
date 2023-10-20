@@ -1,0 +1,24 @@
+// Sample Pokemon data (replace this with your own data)
+const pokedexData = [
+    { name: "Bulbasaur", type: "Grass/Poison", description: "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon." },
+    { name: "Charmander", type: "Fire", description: "The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places." },
+    // Add more Pokemon data here
+];
+
+const searchInput = document.getElementById("search");
+const pokemonDetails = document.getElementById("pokemon-details");
+
+searchInput.addEventListener("input", function () {
+    const searchQuery = searchInput.value.toLowerCase();
+    const matchingPokemon = pokedexData.find(pokemon => pokemon.name.toLowerCase() === searchQuery);
+
+    if (matchingPokemon) {
+        pokemonDetails.innerHTML = `
+            <h2>${matchingPokemon.name}</h2>
+            <p>Type: ${matchingPokemon.type}</p>
+            <p>${matchingPokemon.description}</p>
+        `;
+    } else {
+        pokemonDetails.innerHTML = "Pokemon not found.";
+    }
+});
